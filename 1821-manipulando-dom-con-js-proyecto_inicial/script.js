@@ -1,4 +1,5 @@
-
+//IIFE: Expresión de función ejecutada inmediatamente
+( () => {
 const btn = document.querySelector('[data-form-btn]');
 
 //arrow functions O funcion anonima
@@ -11,17 +12,36 @@ const creatTask = (evento) => {
     task.classList.add('card');
     input.value = " "
     //backtick o template string
-    const content = `<div>
-    <i class="far fa-check-square icon"></i>
-    <span class="task"> ${value} </span>
-  </div>
-  <i class="fas fa-trash-alt trashIcon icon"></i>`
-   task.innerHTML = content;
-//Colocar un elemento hijo dentro del elemento padre utilizando el método appendChild
-   list.appendChild(task);
+    const taskContent = document.createElement('div');
+    const titleTask = document.createElement('span');
+    titleTask.classList.add('task');
+    titleTask.innerText = value;
+    taskContent.appendChild(checkComplete());//Utilizar el atributo parentElement para subir un elemento en el árbol del DOM
+    taskContent.appendChild(titleTask);
 
-    console.log(content);
-};
-console.log(btn);
+    const content = `
+    <i class="fas fa-trash-alt trashIcon icon"></i>`;
+    // task.innerHTML = content;
+    task.appendChild(taskContent);
+    list.appendChild(task); 
+  };
+   
+
 
 btn.addEventListener("click", creatTask); 
+
+const checkComplete = () => {
+    const i = document.createElement("i");
+    i.classList.add("far" ,"fa-check-square", "icon"  );
+    i.addEventListener("click", completeTask)
+    return i
+};
+
+const completeTask = (event) => {
+    const element = event.target //Encontrar el objetivo del evento utilizando la propiedad target
+    element.classList.toggle('fas') //Agregar la clase CSS utilizando el método toggle
+    element.classList.toggle('completeIcon')
+    element.class.toggle("far")
+};
+
+} ) ();
