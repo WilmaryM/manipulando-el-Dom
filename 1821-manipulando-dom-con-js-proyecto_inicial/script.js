@@ -17,7 +17,7 @@ const creatTask = (evento) => {
   </div>
   <i class="fas fa-trash-alt trashIcon icon"></i>`
    task.innerHTML = content;
-
+//Colocar un elemento hijo dentro del elemento padre utilizando el método appendChild
    list.appendChild(task);
 
     console.log(content);
