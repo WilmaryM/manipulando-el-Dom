@@ -10,7 +10,7 @@ const creatTask = (evento) => {
     const task = document.createElement('li');
     task.classList.add('card');
     input.value = " "
-    //backtick 
+    //backtick o template string
     const content = `<div>
     <i class="far fa-check-square icon"></i>
     <span class="task"> ${value} </span>
