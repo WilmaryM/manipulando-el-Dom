@@ -1,5 +1,7 @@
-//IIFE: Expresión de función ejecutada inmediatamente
-( () => {
+
+    import checkComplete from "./componentes/compleTask.js";
+    import deleteIcon from "./componentes/deleteTask.js";
+
 const btn = document.querySelector('[data-form-btn]');
 
 //arrow functions O funcion anonima
@@ -19,10 +21,10 @@ const creatTask = (evento) => {
     taskContent.appendChild(checkComplete());//Utilizar el atributo parentElement para subir un elemento en el árbol del DOM
     taskContent.appendChild(titleTask);
 
-    const content = `
-    <i class="fas fa-trash-alt trashIcon icon"></i>`;
+   
     // task.innerHTML = content;
     task.appendChild(taskContent);
+    task.appendChild(deleteIcon());
     list.appendChild(task); 
   };
    
@@ -30,18 +32,3 @@ const creatTask = (evento) => {
 
 btn.addEventListener("click", creatTask); 
 
-const checkComplete = () => {
-    const i = document.createElement("i");
-    i.classList.add("far" ,"fa-check-square", "icon"  );
-    i.addEventListener("click", completeTask)
-    return i
-};
-
-const completeTask = (event) => {
-    const element = event.target //Encontrar el objetivo del evento utilizando la propiedad target
-    element.classList.toggle('fas') //Agregar la clase CSS utilizando el método toggle
-    element.classList.toggle('completeIcon')
-    element.class.toggle("far")
-};
-
-} ) ();
